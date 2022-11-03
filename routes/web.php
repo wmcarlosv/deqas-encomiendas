@@ -18,7 +18,7 @@ use App\Http\Controllers\ShipmentController;
 Route::get('/',[HomeController::class, 'store'])->name('store');
 Route::get('/the_home/{shop_url}/{access_token}',[HomeController::class, 'the_home'])->name('the_home');
 Route::get('/install',[HomeController::class, 'install'])->name('install');
-Route::get('/print-sticker/{customer}/{address}/{phone}',[HomeController::class,'print_sticker'])->name('print_sticker');
+Route::get('/print-sticker/{code}',[HomeController::class,'print_sticker'])->name('print_sticker');
 
 Auth::routes();
 

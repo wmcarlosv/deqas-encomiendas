@@ -78,13 +78,13 @@
 						html+="<td><a href='#' data-products='"+JSON.stringify(data[i].line_items)+"' class='btn btn-info get-products'>Ver</a></td>";
 						html+="<td>"+data[i].subtotal_price+"</td>";
 						html+="<td>"+data[i].total_price+"</td>";
-						html+="<td><a href='/print-sticker/"+data[i].customer.first_name+" "+data[i].customer.last_name+"/"+(data[i].shipping_address.address1+' '+data[i].shipping_address.address1+' '+data[i].shipping_address.zip+' '+data[i].shipping_address.city+' '+data[i].shipping_address.province+' '+data[i].shipping_address.country)+"/"+data[i].customer.phone+"' class='btn btn-success'>Imprimir</a></td>";
+						html+="<td><a href='/print-sticker/"+data[i].name.replace("#","")+"' class='btn btn-success'>Imprimir</a></td>";
 					html+="</tr>";
 				}
 
 				$("#load_data").html(html);
 			}else{
-				$("#load_data").html("<tr><td colspan='8' align='center'>Sin Resultados</td></tr>");
+				$("#load_data").html("<tr><td colspan='9' align='center'>Sin Resultados</td></tr>");
 			}
 			
 		});

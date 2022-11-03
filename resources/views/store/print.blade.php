@@ -29,6 +29,7 @@
 
 		table tr td:first-child{
 			font-weight: bold;
+			text-align: center;
 		}
 
 		table tr td{
@@ -40,23 +41,54 @@
 	<div id="contenedor">
 		<table>
 			<tr>
-				<td>Empresa:</td>
-				<td>Deqas Encomiendas</td>
-			</tr>
-			<tr>
-				<td>Destinatario:</td>
-				<td>{{ $data['customer'] }}</td>
-			</tr>
-			<tr>
-				<td>Direccion:</td>
-				<td>{{ $data['address'] }}</td>
-			</tr>
-			<tr>
-				<td>Fono:</td>
 				<td>
-					@if($data['phone'] != 'null')
-						{{ $data['phone'] }}
-					@endif
+					Deqas Encomiendas
+				</td>
+				<td>
+					<p>Codigo de Seguimiento</p>
+					<p>{{ $data[0]->shipment_code }}</p>
+				</td>
+				<td>
+					<h3>Enviame</h3>
+				</td>
+			</tr>
+						<tr>
+				<td>
+					<p>Fecha</p>
+					<p>{{ date('d/m/Y',strtotime($data[0]->created_at)) }}</p>
+				</td>
+				<td>
+					<p>Remitente</p>
+					<p>{{ $data[0]->addressee }}</p>
+				</td>
+				<td>
+					<p>Tienda</p>
+					<p>wmcarlosv</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<td colspan="3">
+						{!! DNS1D::getBarcodeHTML(str_replace('#','',$data[0]->shipment_code), 'CODABAR') !!}
+					</td>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Destinatario</p>
+					<p>{{ $data[0]->customer_name }}</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Direccion</p>
+					<p>{{ $data[0]->customer_name }}</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Fono</p>
+					<p>{{ $data[0]->contact_phone }}</p>
 				</td>
 			</tr>
 		</table>

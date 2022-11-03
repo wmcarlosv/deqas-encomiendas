@@ -104,13 +104,8 @@ class HomeController extends Controller
         return response()->json($orders);
     }
 
-    public function print_sticker($customer, $address, $phone){
-        $data = [
-            'customer'=>$customer,
-            'address'=>$address,
-            'phone'=>$phone
-        ];
-
+    public function print_sticker($code){
+        $data = Shipment::where('shipment_code','#'.$code)->get();
         return view('store.print', compact('data'));
     }
 
