@@ -1,0 +1,4 @@
+## Set Variables in env File
+	-SHOPIFY_API_KEY
+	-SHOPIFY_SHARED_SECRET
+	-SHOPIFY_URL_REDIRECT
