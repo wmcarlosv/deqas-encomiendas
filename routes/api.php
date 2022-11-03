@@ -16,6 +16,8 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::post('/orders',[HomeController::class,'orders'])->name('orders');
+Route::post('webhook/order',[HomeController::class,'webhook_order'])->name('webhook_order');
+Route::post('webhook/order/update',[HomeController::class,'webhook_order_update'])->name('webhook_order_update');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

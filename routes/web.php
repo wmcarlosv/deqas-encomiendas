@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/print-sticker/{customer}/{address}/{phone}',[HomeController::class,
 Auth::routes();
 
 Route::group(['prefix'=>'admin','middleware'=>array('auth')], function(){
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::resource('shipments',ShipmentController::class);
 });
 
