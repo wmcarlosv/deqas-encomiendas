@@ -54,7 +54,7 @@
                             {{ date('d-m-Y',strtotime($shipment->created_at)) }}
                         </td>
                         <td>
-                            <form method="POST" action="{{ route('shipments.destroy') }}" style="display:inline;">
+                            <form method="POST" action="{{ route('shipments.destroy', $shipment->id) }}" style="display:inline;">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-danger">Eliminar</button>
