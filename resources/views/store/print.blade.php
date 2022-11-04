@@ -71,7 +71,7 @@
 			<tr>
 				<td colspan="3" style="text-align: left;">
 					<p>Direccion:</p>
-					<p><b>{{ $data[0]->address.' '.$data[0]->comune.' '.$data[0]->region.', '.$data[0]->observation }}</b></p>
+					<p><b>{{ $data[0]->address.' '.$data[0]->comune.' '.$data[0]->region }}</b></p>
 				</td>
 			</tr>
 			<tr>
