@@ -15,25 +15,20 @@
 		}
 
 		div#contenedor{
-			width: 500px;
+			width: 800px;
 			height: auto;
 			overflow: hidden;
 			padding: 10px;
 			margin: 10px auto;
-			border: 1px solid black;
 		}
 
 		table{
 			width: 100% !important;
 		}
 
-		table tr td:first-child{
-			font-weight: bold;
-			text-align: center;
-		}
-
 		table tr td{
-			padding: 10px;
+			padding: 10px 20px;
+			border: 3px solid black;
 		}
 	</style>
 </head>
@@ -42,53 +37,53 @@
 		<table>
 			<tr>
 				<td>
-					Deqas Encomiendas
+					
 				</td>
 				<td>
-					<p>Codigo de Seguimiento</p>
-					<p>{{ $data[0]->shipment_code }}</p>
+					<p>Codigo de Seguimiento:</p>
+					<p style="text-align: center;"><b>{{ $data[0]->shipment_code }}</b></p>
 				</td>
 				<td>
-					<h3>Enviame</h3>
+					<h3 style="text-transform: uppercase;">Deqas</h3>
 				</td>
 			</tr>
 						<tr>
 				<td>
-					<p>Fecha</p>
-					<p>{{ date('d/m/Y',strtotime($data[0]->created_at)) }}</p>
+					<p>Fecha:</p>
+					<p><b>{{ date('d/m/Y',strtotime($data[0]->created_at)) }}</b></p>
 				</td>
-				<td>
+				<td colspan="2">
 					<p>Remitente</p>
-					<p>{{ $data[0]->addressee }}</p>
-				</td>
-				<td>
-					<p>Tienda</p>
-					<p>wmcarlosv</p>
+					<p><b>{{ $data[0]->vendor }}</b></p>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<td colspan="3">
-						{!! DNS1D::getBarcodeHTML(str_replace('#','',$data[0]->shipment_code), 'CODABAR') !!}
-					</td>
+				<td colspan="3" align="center">
+					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',10,100) !!}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: left;">
+					<p>Destinatario:</p>
+					<p><b>{{ $data[0]->customer_name }}</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: left;">
+					<p>Direccion:</p>
+					<p><b>{{ $data[0]->observation.' '.$data[0]->address.' '.$data[0]->comune.' '.$data[0]->region.' '.$data[0]->country }}</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: left;">
+					<p>Observacion:</p>
+					<p><b>{{ $data[0]->observation }}</b></p>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<p>Destinatario</p>
-					<p>{{ $data[0]->customer_name }}</p>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<p>Direccion</p>
-					<p>{{ $data[0]->customer_name }}</p>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<p>Fono</p>
-					<p>{{ $data[0]->contact_phone }}</p>
+					<p>Fono:</p>
+					<p><b>{{ $data[0]->contact_phone }}</b></p>
 				</td>
 			</tr>
 		</table>

@@ -27,19 +27,31 @@
                    <th>Pais</th>
                    <th>Telefono Contacto</th>
                    <th>Email Contacto</th>
+                   <th>Estado</th>
+                   <th>Fecha</th>
                </thead>
                <tbody>
                    @foreach($shipments as $shipment)
                     <tr>
                         <td>{{ $shipment->shipment_code }}</td>
                         <td>{{ $shipment->addressee }}</td>
-                        <td>{{ $shipment->customer_name }}</td>
+                        <td>{{ $shipment->vendor }}</td>
                         <td>{{ $shipment->address }}</td>
                         <td>{{ $shipment->comune }}</td>
                         <td>{{ $shipment->region }}</td>
                         <td>{{ $shipment->country }}</td>
                         <td>{{ $shipment->contact_phone }}</td>
                         <td>{{ $shipment->contact_email }}</td>
+                        <td>
+                            @if($shipment->status)
+                                Preparado
+                            @else
+                                No Preparado
+                            @endif
+                        </td>   
+                        <td>
+                            {{ date('d-m-Y',strtotime($shipment->created_at)) }}
+                        </td>
                     </tr>
                    @endforeach
                </tbody>

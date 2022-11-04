@@ -112,7 +112,8 @@ class HomeController extends Controller
     public function webhook_order(Request $request){
         $data = file_get_contents('php://input');
         $the_data = json_decode($data);
-        file_put_contents('order.json', $the_data->customer->first_name." ".$the_data->customer->last_name);
+        $vendor = "";
+        file_put_contents('order.json',$data);
 
         $isDecas = false;
         foreach($the_data->shipping_lines as $shl){
@@ -120,6 +121,11 @@ class HomeController extends Controller
                 $isDecas = true;
                 break;
             }
+        }
+
+        foreach($the_data->line_items as $li){
+            $vendor = $li->vendor;
+            break;
         }
 
         if($isDecas){
@@ -133,11 +139,47 @@ class HomeController extends Controller
             $shipment->country = $the_data->billing_address->country;
             $shipment->contact_phone = $the_data->customer->phone;
             $shipment->contact_email = $the_data->customer->email;
+            $shipment->status = $the_data->fulfillment_status;
+            $shipment->observation = $the_data->billing_address->address2;
+            $shipment->vendor = $vendor;
             $shipment->save();
         }
     }
 
     public function webhook_order_update(Request $request){
-        
+        $data = file_get_contents('php://input');
+        $the_data = json_decode($data);
+        $vendor = "";
+        file_put_contents('order.json',$data);
+
+        $isDecas = false;
+        foreach($the_data->shipping_lines as $shl){
+            if($shl->code == 'Deqas'){
+                $isDecas = true;
+                break;
+            }
+        }
+
+        foreach($the_data->line_items as $li){
+            $vendor = $li->vendor;
+            break;
+        }
+
+        if($isDecas){
+            $shipment = Shipment::where('shipment_code',$the_data->name)->first();
+            $shipment->shipment_code = $the_data->name;
+            $shipment->addressee = $the_data->billing_address->name;
+            $shipment->customer_name = $the_data->customer->first_name." ".$the_data->customer->last_name;
+            $shipment->address = $the_data->billing_address->address1;
+            $shipment->comune = $the_data->billing_address->city;
+            $shipment->region = $the_data->billing_address->province;
+            $shipment->country = $the_data->billing_address->country;
+            $shipment->contact_phone = $the_data->customer->phone;
+            $shipment->contact_email = $the_data->customer->email;
+            $shipment->status = $the_data->fulfillment_status;
+            $shipment->observation = $the_data->billing_address->address2;
+            $shipment->vendor = $vendor;
+            $shipment->update();
+        }
     }
 }
