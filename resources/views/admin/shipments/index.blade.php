@@ -29,6 +29,7 @@
                    <th>Email Contacto</th>
                    <th>Estado</th>
                    <th>Fecha</th>
+                   <th>Acciones</th>
                </thead>
                <tbody>
                    @foreach($shipments as $shipment)
@@ -51,6 +52,13 @@
                         </td>   
                         <td>
                             {{ date('d-m-Y',strtotime($shipment->created_at)) }}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('shipments.destroy') }}" style="display:inline;">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                    @endforeach

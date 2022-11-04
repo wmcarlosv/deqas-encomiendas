@@ -81,6 +81,8 @@ class ShipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shipment = Shipment::findorfail($id);
+        $shipment->delete();
+        return redirect()->route('shipments.index');
     }
 }
