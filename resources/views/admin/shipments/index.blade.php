@@ -16,8 +16,17 @@
            <h3>Listado de Entregas</h3>
        </div>
        <div class="card-body">
+            <form action="{{ route('delete_multiple') }}" id="form-eliminados" style="display:inline;" method="POST">
+                @method('DELETE')
+                @csrf
+                <input type="hidden" name="seleccionados_eliminar" id="seleccionados_eliminar">
+                <button class="btn btn-danger" type="button" id="eliminar_multiple">Eliminar Seleccionados</button>
+            </form>
+            <br />
+            <br />
            <table class="table table-striped table-bordered">
                <thead>
+                   <th>#</th>
                    <th>Codigo Despacho</th>
                    <th>Nombre Destinatario</th>
                    <th>Nombre Cliente</th>
@@ -34,6 +43,7 @@
                <tbody>
                    @foreach($shipments as $shipment)
                     <tr>
+                        <td><input type="checkbox" value="{{ $shipment->id }}" name="orders_delete[]"></td>
                         <td>{{ $shipment->shipment_code }}</td>
                         <td>{{ $shipment->addressee }}</td>
                         <td>{{ $shipment->vendor }}</td>
@@ -83,6 +93,25 @@
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
+            });
+
+            $("#eliminar_multiple").click(function(){
+                let lista = $("input[name='orders_delete[]']");
+                let seleccionados = 0;
+                let ids = "";
+                $.each(lista,function(e,v){
+                    if(v.checked){
+                        ids+=v.value+",";
+                        seleccionados++;
+                    }
+                });
+
+                if(seleccionados == 0){
+                    alert("Debes seleccionar al menos 1 Registro!!");
+                }else{
+                    $("#seleccionados_eliminar").val(ids.slice(0, -1));
+                    $("#form-eliminados").submit();
+                }
             });
         });
     </script>

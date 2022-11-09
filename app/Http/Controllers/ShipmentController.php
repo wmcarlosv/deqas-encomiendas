@@ -85,4 +85,13 @@ class ShipmentController extends Controller
         $shipment->delete();
         return redirect()->route('shipments.index');
     }
+
+    public function delete_multiple(Request $request){
+        $ids = explode(',',$request->seleccionados_eliminar);
+        foreach($ids as $id){
+            $shipment = Shipment::findorfail($id);
+            $shipment->delete();
+        }
+        return redirect()->route('shipments.index');
+    }
 }

@@ -80,7 +80,9 @@ class HomeController extends Controller
 
         $shopify->Webhook()->post($webhook_data);*/
 
-        return view('store.index', compact('config'));
+        $shipments = Shipment::all();
+
+        return view('store.index', compact('config','shipments'));
     }
 
     public function index()
@@ -142,6 +144,7 @@ class HomeController extends Controller
             $shipment->status = $the_data->fulfillment_status;
             $shipment->observation = $the_data->billing_address->address2;
             $shipment->vendor = $vendor;
+            $shipment->order_shopify_id = $the_data->id;
             $shipment->save();
         }
     }
@@ -150,7 +153,6 @@ class HomeController extends Controller
         $data = file_get_contents('php://input');
         $the_data = json_decode($data);
         $vendor = "";
-        file_put_contents('order.json',$data);
 
         $isDecas = false;
         foreach($the_data->shipping_lines as $shl){
@@ -160,13 +162,28 @@ class HomeController extends Controller
             }
         }
 
+        if(trim(strtoupper($the_data->tags)) == 'DEQAS'){
+            $isDecas = true;
+        }
+
+
         foreach($the_data->line_items as $li){
             $vendor = $li->vendor;
             break;
         }
 
         if($isDecas){
-            $shipment = Shipment::where('shipment_code',$the_data->name)->first();
+
+            $obj_shipment = Shipment::where('shipment_code',$the_data->name)->get();
+
+            file_put_contents('order.json',json_encode($obj_shipment));
+
+            if(count($obj_shipment) > 0){
+                $shipment = Shipment::findorfail($obj_shipment->id);
+            }else{
+               $shipment = new Shipment(); 
+            }
+
             $shipment->shipment_code = $the_data->name;
             $shipment->addressee = $the_data->billing_address->name;
             $shipment->customer_name = $the_data->customer->first_name." ".$the_data->customer->last_name;
@@ -179,7 +196,8 @@ class HomeController extends Controller
             $shipment->status = $the_data->fulfillment_status;
             $shipment->observation = $the_data->billing_address->address2;
             $shipment->vendor = $vendor;
-            $shipment->update();
+            $shipment->order_shopify_id = $the_data->id;
+            $shipment->save();
         }
     }
 }

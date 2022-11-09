@@ -25,5 +25,6 @@ Auth::routes();
 Route::group(['prefix'=>'admin','middleware'=>array('auth')], function(){
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('shipments',ShipmentController::class);
+    Route::delete('/delete-multiple',[ShipmentController::class, 'delete_multiple'])->name('delete_multiple');
 });
 
