@@ -139,7 +139,7 @@ class HomeController extends Controller
             $shipment->comune = $the_data->billing_address->city;
             $shipment->region = $the_data->billing_address->province;
             $shipment->country = $the_data->billing_address->country;
-            $shipment->contact_phone = $the_data->customer->phone;
+            $shipment->contact_phone = $the_data->billing_address->phone;
             $shipment->contact_email = $the_data->customer->email;
             $shipment->status = $the_data->fulfillment_status;
             $shipment->observation = $the_data->billing_address->address2;
@@ -191,7 +191,7 @@ class HomeController extends Controller
             $shipment->comune = $the_data->billing_address->city;
             $shipment->region = $the_data->billing_address->province;
             $shipment->country = $the_data->billing_address->country;
-            $shipment->contact_phone = $the_data->customer->phone;
+            $shipment->contact_phone = $the_data->billing_address->phone;
             $shipment->contact_email = $the_data->customer->email;
             $shipment->status = $the_data->fulfillment_status;
             $shipment->observation = $the_data->billing_address->address2;
