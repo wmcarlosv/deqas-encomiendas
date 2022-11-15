@@ -15,7 +15,7 @@
 		}
 
 		div#contenedor{
-			width: 1181px;
+			width: 377px !important;
 			height: auto;
 			overflow: hidden;
 			padding: 10px;
