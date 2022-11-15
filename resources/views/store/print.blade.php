@@ -19,8 +19,7 @@
 			width: 400px !important;
 			height: auto;
 			overflow: hidden;
-			padding: 3px;
-			margin: 0px auto;
+			margin: 0px auto !important;
 		}
 
 		table{
@@ -28,7 +27,7 @@
 		}
 
 		table tr td{
-			padding: 5px 10px;
+			padding: 3px 7px;
 			border: 1px solid black;
 		}
 	</style>
