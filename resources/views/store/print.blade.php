@@ -23,7 +23,7 @@
 		}
 
 		table{
-			width: 377px !important;
+			width: 100% !important;
 		}
 
 		table tr td{
