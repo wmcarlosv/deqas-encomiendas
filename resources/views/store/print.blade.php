@@ -15,7 +15,7 @@
 		}
 
 		div#contenedor{
-			width: 377px !important;
+			width: 400px !important;
 			height: auto;
 			overflow: hidden;
 			padding: 10px;
@@ -23,7 +23,7 @@
 		}
 
 		table{
-			width: 100% !important;
+			width: 377px !important;
 		}
 
 		table tr td{
@@ -59,7 +59,7 @@
 			</tr>
 			<tr>
 				<td colspan="3" align="center">
-					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',10,100) !!}
+					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',5,120) !!}
 				</td>
 			</tr>
 			<tr>
