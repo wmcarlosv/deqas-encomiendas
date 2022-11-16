@@ -9,33 +9,57 @@
 			margin: 0px;
 			padding: 0px;
 			box-sizing: border-box;
-			font-size: 15px;
+			font-size: 18px;
 		}
 		body{
 			background:  white;
 		}
 
 		div#contenedor{
-			width: 600px !important;
-			height: auto;
+			width: 520px !important;
+			height: 510px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
 		}
 
 		table{
 			width: 100% !important;
-			margin: 5px auto !important;
 		}
 
 		table tr td{
-			padding: 6px 14px;
+			padding: 10px 0px;
 			border: 2px solid black;
+		}
+
+		text#code{
+			font-size: 15px !important;
+			font-weight: bold !important;
+		}
+
+		@page {
+		    margin: 0 !important;
+		}
+
+		@media print {
+		  #print_button {
+		    display: none;
+		  }
+
+		  div#contenedor{
+				width: 98% !important;
+				height: 510px !important;
+				overflow: hidden;
+				margin: 0px auto !important;
+			}
 		}
 	</style>
 </head>
 <body>
+	<center>
+		<button type="button" id="print_button" onclick="javascript:print();">Imprimir</button>
+	</center>
+	@foreach($shipments as $shipment)
 	<div id="contenedor">
-		@foreach($shipments as $shipment)
 		<table>
 			<tr>
 				<td>
@@ -89,10 +113,7 @@
 				</td>
 			</tr>
 		</table>
-		@endforeach
-		<center>
-			<button type="button" onclick="javascript:print();">Imprimir</button>
-		</center>
 	</div>
+	@endforeach
 </body>
 </html>
