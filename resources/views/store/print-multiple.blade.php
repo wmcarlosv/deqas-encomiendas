@@ -17,10 +17,10 @@
 
 		div#contenedor{
 			width: 520px !important;
-			height: 510px !important;
+			height: 520px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
-			margin-bottom: 35px !important;
+			margin-bottom: 30px !important;
 		}
 
 		table{
@@ -28,7 +28,7 @@
 		}
 
 		table tr td{
-			padding: 10px 0px;
+			padding: 11px 0px;
 			border: 2px solid black;
 		}
 
@@ -48,10 +48,10 @@
 
 		  div#contenedor{
 				width: 98% !important;
-				height: 510px !important;
+				height: 520px !important;
 				overflow: hidden;
 				margin: 0px auto !important;
-				margin-bottom: 35px !important;
+				margin-bottom: 30px !important;
 			}
 		}
 	</style>
