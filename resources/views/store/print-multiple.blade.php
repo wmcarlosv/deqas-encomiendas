@@ -35,9 +35,6 @@
 </head>
 <body>
 	<div id="contenedor">
-		<center>
-			<button type="button" onclick="javascript:print();">Imprimir</button>
-		</center>
 		@foreach($shipments as $shipment)
 		<table>
 			<tr>
@@ -93,6 +90,9 @@
 			</tr>
 		</table>
 		@endforeach
+		<center>
+			<button type="button" onclick="javascript:print();">Imprimir</button>
+		</center>
 	</div>
 </body>
 </html>
