@@ -30,6 +30,17 @@
 			padding: 25px 14px;
 			border: 2px solid black;
 		}
+
+		text#code{
+			font-size: 15px !important;
+			font-weight: bold !important;
+		}
+
+		@media print {
+		  #print_button {
+		    display: none;
+		  }
+		}
 	</style>
 </head>
 <body>
@@ -88,7 +99,7 @@
 			</tr>
 		</table>
 		<center>
-			<button type="button" onclick="javascript:print();">Imprimir</button>
+			<button type="button" id="print_button" onclick="javascript:print();">Imprimir</button>
 		</center>
 	</div>
 </body>
