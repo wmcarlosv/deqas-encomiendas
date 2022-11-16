@@ -16,8 +16,8 @@
 		}
 
 		div#contenedor{
-			width: 550px !important;
-			height: 530px !important;
+			width: 520px !important;
+			height: 510px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
 		}
@@ -27,7 +27,7 @@
 		}
 
 		table tr td{
-			padding: 11px 0px;
+			padding: 10px 0px;
 			border: 2px solid black;
 		}
 
@@ -46,8 +46,8 @@
 		  }
 
 		  div#contenedor{
-				width: 100% !important;
-				height: 530px !important;
+				width: 98% !important;
+				height: 510px !important;
 				overflow: hidden;
 				margin: 0px auto !important;
 			}
