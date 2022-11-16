@@ -9,15 +9,15 @@
 			margin: 0px;
 			padding: 0px;
 			box-sizing: border-box;
-			font-size: 15px;
+			font-size: 30px;
 		}
 		body{
 			background:  white;
 		}
 
 		div#contenedor{
-			width: 600px !important;
-			height: auto;
+			width: 1000px !important;
+			height: 1000px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
 		}
@@ -27,7 +27,7 @@
 		}
 
 		table tr td{
-			padding: 6px 14px;
+			padding: 25px 14px;
 			border: 2px solid black;
 		}
 	</style>
@@ -59,7 +59,7 @@
 			</tr>
 			<tr>
 				<td colspan="3" align="center">
-					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',5,50) !!}
+					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',15,150) !!}
 				</td>
 			</tr>
 			<tr>
