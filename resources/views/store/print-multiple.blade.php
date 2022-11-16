@@ -9,14 +9,14 @@
 			margin: 0px;
 			padding: 0px;
 			box-sizing: border-box;
-			font-size: 10px;
+			font-size: 15px;
 		}
 		body{
 			background:  white;
 		}
 
 		div#contenedor{
-			width: 400px !important;
+			width: 600px !important;
 			height: auto;
 			overflow: hidden;
 			margin: 0px auto !important;
@@ -28,8 +28,8 @@
 		}
 
 		table tr td{
-			padding: 3px 7px;
-			border: 1px solid black;
+			padding: 6px 14px;
+			border: 2px solid black;
 		}
 	</style>
 </head>
