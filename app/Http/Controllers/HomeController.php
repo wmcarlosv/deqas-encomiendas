@@ -63,7 +63,7 @@ class HomeController extends Controller
         
     }
 
-    public function the_home($shop_url, $access_token){
+    public function the_home($shop_url=null, $access_token=null){
         $config = array(
             'ShopUrl' => $shop_url,
             'AccessToken' => $access_token,
@@ -81,7 +81,6 @@ class HomeController extends Controller
         $shopify->Webhook()->post($webhook_data);*/
 
         $shipments = Shipment::all();
-
         return view('store.index', compact('config','shipments'));
     }
 

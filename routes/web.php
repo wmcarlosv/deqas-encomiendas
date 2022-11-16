@@ -16,7 +16,7 @@ use App\Http\Controllers\ShipmentController;
 */
 
 Route::get('/',[HomeController::class, 'store'])->name('store');
-Route::get('/the_home/{shop_url}/{access_token}',[HomeController::class, 'the_home'])->name('the_home');
+Route::get('/the_home/{shop_url?}/{access_token?}',[HomeController::class, 'the_home'])->name('the_home');
 Route::get('/install',[HomeController::class, 'install'])->name('install');
 Route::get('/print-sticker/{code}',[HomeController::class,'print_sticker'])->name('print_sticker');
 
@@ -28,3 +28,6 @@ Route::group(['prefix'=>'admin','middleware'=>array('auth')], function(){
     Route::delete('/delete-multiple',[ShipmentController::class, 'delete_multiple'])->name('delete_multiple');
 });
 
+Route::post('/store-from-home',[ShipmentController::class, 'store_from_home'])->name('store_from_home');
+Route::post('/update-from-home/{id}',[ShipmentController::class, 'update_from_home'])->name('update_from_home');
+Route::get('/multiple-impresion/{ids}',[ShipmentController::class, 'multiple_impresion'])->name('multiple_impresion');
