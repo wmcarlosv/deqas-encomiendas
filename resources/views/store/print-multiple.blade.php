@@ -20,6 +20,7 @@
 			height: 510px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
+			margin-bottom: 35px !important;
 		}
 
 		table{
@@ -50,6 +51,7 @@
 				height: 510px !important;
 				overflow: hidden;
 				margin: 0px auto !important;
+				margin-bottom: 35px !important;
 			}
 		}
 	</style>
