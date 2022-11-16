@@ -9,15 +9,15 @@
 			margin: 0px;
 			padding: 0px;
 			box-sizing: border-box;
-			font-size: 30px;
+			font-size: 20px;
 		}
 		body{
 			background:  white;
 		}
 
 		div#contenedor{
-			width: 1000px !important;
-			height: 1000px !important;
+			width: 600px !important;
+			height: 600px !important;
 			overflow: hidden;
 			margin: 0px auto !important;
 		}
@@ -27,7 +27,7 @@
 		}
 
 		table tr td{
-			padding: 25px 14px;
+			padding: 15px 7px;
 			border: 2px solid black;
 		}
 
@@ -36,10 +36,21 @@
 			font-weight: bold !important;
 		}
 
+		@page {
+		    margin: 0 !important;
+		}
+
 		@media print {
 		  #print_button {
 		    display: none;
 		  }
+
+		  div#contenedor{
+				width: 100% !important;
+				height: 600px !important;
+				overflow: hidden;
+				margin: 0px auto !important;
+			}
 		}
 	</style>
 </head>
@@ -70,7 +81,7 @@
 			</tr>
 			<tr>
 				<td colspan="3" align="center">
-					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',15,150) !!}
+					{!! DNS1D::getBarcodeSVG(str_replace('#','',$data[0]->shipment_code), 'CODABAR',9,60) !!}
 				</td>
 			</tr>
 			<tr>
@@ -98,9 +109,9 @@
 				</td>
 			</tr>
 		</table>
-		<center>
+	</div>
+	<center>
 			<button type="button" id="print_button" onclick="javascript:print();">Imprimir</button>
 		</center>
-	</div>
 </body>
 </html>
